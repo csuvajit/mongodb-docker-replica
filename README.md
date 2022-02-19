@@ -21,3 +21,13 @@ rs.initiate({ _id: "rs0", members: [ { _id: 0, host: "mongodb" }] })
 ```
 mongodb://<root>:<password>@mongodb:27017/<db>?authSource=admin
 ```
+
+### Dump & Restore
+
+```
+mongodump -u=root -p=password -d=db  --authenticationDatabase=admin
+```
+
+```
+mongorestore -u=root -p=password  --authenticationDatabase=admin
+```
