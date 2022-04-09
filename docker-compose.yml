@@ -20,12 +20,25 @@ services:
       - 'mongodb-data:/data/db'
       - 'mongodb-config:/data/configdb'
     command: --bind_ip_all --replSet rs0 --keyFile keyFile.pem
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    mem_limit: '2g'
+    ports:
+      - 6379:6379
+    networks:
+      - default_net
+    volumes:
+      - 'redis-data:/data'
 
 volumes:
   mongodb-data:
     name: mongodb-data
   mongodb-config:
     name: mongodb-config
+  redis-data:
+    name: redis-data
 
 networks:
   default_net:
